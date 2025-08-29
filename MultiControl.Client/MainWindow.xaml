@@ -1,0 +1,65 @@
+<Window x:Class="MultiControl.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiControl.Client"
+        mc:Ignorable="d"
+        Title="MultiControl Client" Height="350" Width="600"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="10">
+            <TextBlock Text="MultiControl Client" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Client Name:" Margin="0,0,10,5" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtClientName" Margin="0,0,0,5" Text="Client"/>
+                
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Server IP:" Margin="0,0,10,5" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtServerIp" Margin="0,0,0,5" Text="127.0.0.1"/>
+                
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Server Port:" Margin="0,0,10,5" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtServerPort" Margin="0,0,0,5" Text="5000"/>
+                
+                <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" x:Name="btnConnect" Content="Connect" Click="btnConnect_Click" Padding="15,5" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            </Grid>
+        </StackPanel>
+        
+        <!-- Status and Log -->
+        <GroupBox Grid.Row="1" Header="Connection Log" Margin="10">
+            <ScrollViewer>
+                <TextBlock x:Name="txtLog" TextWrapping="Wrap"/>
+            </ScrollViewer>
+        </GroupBox>
+        
+        <!-- Control Mode -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Control Mode:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBlock x:Name="txtControlMode" Text="Individual" FontWeight="Bold" VerticalAlignment="Center"/>
+            
+            <TextBlock Text="Status:" VerticalAlignment="Center" Margin="20,0,10,0"/>
+            <TextBlock x:Name="txtStatus" Text="Disconnected" FontWeight="Bold" VerticalAlignment="Center"/>
+            
+            <CheckBox x:Name="chkAllowRemoteControl" Content="Allow Remote Control" IsChecked="True" VerticalAlignment="Center" Margin="20,0,0,0" Checked="chkAllowRemoteControl_CheckedChanged" Unchecked="chkAllowRemoteControl_CheckedChanged"/>
+        </StackPanel>
+    </Grid>
+</Window>
